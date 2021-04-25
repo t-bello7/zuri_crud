@@ -63,3 +63,15 @@ def signup(request):
     else:
         form = UserCreateForm()
     return render(request, 'signup.html', {'form': form})
+
+
+def login(request):
+    username = request.POST['username']
+    password = request.POST['password']
+    new_user = authenticate(request, username=username, password=password)
+    
+    if user is not None:
+        login(request, new_user)
+        return redirect('home')
+    else:
+        pass

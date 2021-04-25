@@ -2,11 +2,7 @@
 
 
 {% block body %}
-{% if user.is_authenticated %}
-<h1><i>Welcome to my awesome Blog {{ user.username }}</i></h1>
-{% else %}
-Welcome to my awesome Blog
-{% endif %}
+
 <h1>{{ post.title }}</h1>
 <small>BY: {{ post.author.first_name}} {{ post.author.last_name}} - {{post.post_date}} -- <a href="{% url 'update' post.pk %}">Update YourPost</a> <a href="{% url 'delete_post' post.pk %}">Delete</a></small><br>
 <br>
@@ -15,7 +11,8 @@ Welcome to my awesome Blog
 <h2>Comments</h2>
 <a href="{% url 'comment' post.pk %}">Add comment</a>
 {% if not post.comments.all %}
-No Comment Yet......<a href="{% url 'comment' post.pk %}">Add comment</a>
+
+
 {%else%}
 {%for comment in post.comments.all %}
  {{ comment.name}}
@@ -24,7 +21,4 @@ No Comment Yet......<a href="{% url 'comment' post.pk %}">Add comment</a>
  {{ comment.body}}
 {%endfor%}
 {%endif%}
-
-<br><br>
-<a href="{% url 'home' %}">back</a>
 {% endblock %}
