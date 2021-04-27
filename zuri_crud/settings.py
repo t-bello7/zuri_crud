@@ -11,7 +11,6 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 
 from pathlib import Path
-from zuri_crud.secret_settings import *
 import os
 from environs import Env
 
