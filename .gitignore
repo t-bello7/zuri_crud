@@ -1,3 +1,4 @@
 zuri_crud/secret_settings.py
 venv/
-__pychache__/
+blog/__pychache__/
+zuri_crud/__pychache__/
