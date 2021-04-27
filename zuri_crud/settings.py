@@ -25,7 +25,7 @@ TEMPLATE_DIR = os.path.join(BASE_DIR,'templates')
 SECRET_KEY = env.str("SECRET_KEY")
 DEBUG = env.bool('DEBUG',default = False)
 
-ALLOWED_HOSTS = ['127.0.0.1', '.herokuapp.com']
+ALLOWED_HOSTS = '.herokuapp.com','localhost', '127.0.0.1']
 
 
 # Application definition
