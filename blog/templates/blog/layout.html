@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+{% load static %}
+
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width={device-width}, initial-scale=1.0">
+    <link rel="stylesheet"  type="text/css" href="{% static 'blog/style.css' %}">
+    <title></title>
+</head>
+<body>
+    <navbar >
+        <div class="logo">
+            MayaBlog
+        </div>
+        <ul class="menu">
+            <li><a href="{% url 'user' %}">Home </a></li>
+        </ul>
+    <div class="auth">
+        {% if user.is_authenticated %}
+        <button> <a href="{% url 'logout'%}">Logout</a> </button>
+         {%else%}
+        <button>  <a href="{% url 'signup'%}">Register</a></button>
+        <button> <a href="{% url 'login'%}">Login</a></button>
+         {%endif%}
+    </div>
+</navbar>
+{% block body %}
+
+{% endblock %}
+
+</body>
+</html>
