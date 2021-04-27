@@ -8,6 +8,8 @@ environs = {version = "==8.0.0", extras = ["django"]}
 psycopg2-binary = "*"
 whitenoise = "*"
 gunicorn = "*"
+django-heroku = "*"
+psycopg2 = "*"
 
 [dev-packages]
 
