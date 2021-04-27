@@ -2,3 +2,6 @@ zuri_crud/secret_settings.py
 venv/
 blog/__pychache__/
 zuri_crud/__pychache__/
+__pychache__/
+.env
+db.sqlite3

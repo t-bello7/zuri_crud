@@ -10,9 +10,9 @@
 
 </form>
 {% else %}
-<p>You have to register to update posts</p>
+<p>You have to register or login to update posts</p>
 <a href="{% url 'signup'%}">Register</a>
-
+<a href="{% url 'login'%}"> Login </a>
 {%endif%}
 
 {% endblock %}
