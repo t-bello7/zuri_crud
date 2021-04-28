@@ -13,3 +13,5 @@ The project allows you to quickly run a fully functional CRUD website
 3. Install the requirements of the project with the command
   _pip install -r requirements.txt_
 
+Deployed the app on heroku 
+https://zuricrud-blog.herokuapp.com/
