@@ -1,10 +1,15 @@
 from django.shortcuts import render, redirect
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
-from .models import Post, comments
+from rest_framework import serializers
+from .models import Post, Comments
 from django.urls import reverse_lazy
 from django.views import generic
 from django.http import HttpResponse
-
+from rest_framework.decorators import api_view
+from rest_framework.response import Response
+from .models import Post
+from .serializers import PostSerializer
+from rest_framework import viewsets
 from django.contrib.auth import authenticate, login
 from .forms import UserCreateForm, CommentForm
 
@@ -38,7 +43,7 @@ class DeletePostView(DeleteView):
     success_url = reverse_lazy('user')
 
 class AddCommentView(CreateView):
-    model = comments
+    model = Comments
     form_class = CommentForm
     template_name = 'add_comments.html'
 
@@ -64,3 +69,29 @@ def signup(request):
         form = UserCreateForm()
     return render(request, 'signup.html', {'form': form})
 
+# @api_view(['GET'])
+# def post_collection(request):
+#     if request.method == 'GET':
+#         posts = Post.objects.all()
+#         serializer = PostSerializer(posts, many =True)
+#         content ={
+#             "posts": serializer.data,
+#         }
+#         return Response(content)
+
+# @api_view(['GET'])
+# def post_element(request, pk):
+#     try: 
+#         post = Post.objects.get(pk=pk)
+#     except Post.DoesNotExist:
+#         return HttpResponse(status=404)
+
+#     if request.method == 'GET':
+#         serializer = PostSerializer(post)
+#         return Response(serializer.data)
+
+class PostViewSet(viewsets.ModelViewSet):
+    serializer_class = PostSerializer
+
+    def get_queryset(self):
+        return Post.objects.all()

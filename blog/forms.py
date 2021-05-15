@@ -1,5 +1,5 @@
 from django import forms
-from .models import Post, comments
+from .models import Post, Comments
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 
@@ -35,7 +35,7 @@ class UserCreateForm(UserCreationForm):
 
 class CommentForm(forms.ModelForm):
     class Meta:
-        model = comments
+        model = Comments
         fields =('name','body')
         widgets = {
         'name':forms.TextInput(),
