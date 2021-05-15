@@ -10,7 +10,6 @@ from rest_framework.routers import DefaultRouter
 
 router = DefaultRouter()
 router.register(r'posts', views.PostViewSet, "post")
-
 urlpatterns = [
     path('',HomeView.as_view(), name='user'),
     path('article/<int:pk>', ArticleDetailView.as_view(), name='article_details'),
