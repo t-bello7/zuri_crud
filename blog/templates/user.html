@@ -12,6 +12,8 @@
         <h2>{{post.title}}</h2>
         <li>  
             {{ post.body|slice:":40"|safe }}
+            <br>
+            <br>
             <a href="{% url 'article_details' post.pk %}">Read more</a>
             <!-- <br> {{post.post_date}}<br> 
             {{ post.author }} -->

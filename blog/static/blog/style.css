@@ -1,25 +1,31 @@
 body{
-  width :100%;
+  width :80%;
   height : 100vh;
   background-color: #ebebeb;
-
+  margin: 0 auto;
 }
 
-navbar{
+navbar .content{
+  margin-top: 30px;
   display: flex;
   justify-content: space-between;
 }
 
-navbar .menu{
-  list-style: none;
-  display:inline-flex;
+.logo a{
+  text-decoration : none;
+  font-size: 20px;
 }
 
-navbar .menu li{
-  padding-left: 20px;
-}
+
+
 
 /* Post styling*/
+section{
+  background-color: white;
+  margin: 50px 20px 20px 20px;
+  height: 100%;
+  
+}
 section ul li{
   list-style: none;
 }
