@@ -1,10 +1,7 @@
 from django.shortcuts import render, redirect
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
-from rest_framework import serializers
 from .models import Post, Comments
 from django.urls import reverse_lazy
-from django.views import generic
-from django.http import HttpResponse
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from .models import Post
@@ -14,38 +11,35 @@ from django.contrib.auth import authenticate, login
 from .forms import UserCreateForm, CommentForm
 
 # Create your views here.
-#def home(request):
-#    return render(request,'home.html',{})
-#homeView for list
 class HomeView(ListView):
     model = Post
-    template_name= 'user.html'
+    template_name= 'blog/user.html'
     ordering = ['-id']
 
 
 class ArticleDetailView(DetailView):
     model = Post
-    template_name = 'article_details.html'
+    template_name = 'blog/article_details.html'
 
 class AddPostView(CreateView):
     model = Post
-    template_name = 'add_post.html'
+    template_name = 'blog/add_post.html'
     fields = '__all__'
 
 class UpdatePostView(UpdateView):
     model = Post
-    template_name = 'update.html'
+    template_name = 'blog/update.html'
     fields=['title','title_tag','body']
 
 class DeletePostView(DeleteView):
     model = Post
-    template_name = 'delete_post.html'
+    template_name = 'blog/delete_post.html'
     success_url = reverse_lazy('user')
 
 class AddCommentView(CreateView):
     model = Comments
     form_class = CommentForm
-    template_name = 'add_comments.html'
+    template_name = 'blog/add_comments.html'
 
     def form_valid(self, form):
         form.instance.post.id = self.kwargs['pk']
