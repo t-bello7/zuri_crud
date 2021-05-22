@@ -16,9 +16,7 @@ class UserCreateForm(UserCreationForm):
     class Meta:
         model = User
         fields = ('username', 'email', 'password1', 'password2')
-        widget= {
-        'username':forms.TextInput(attrs={'class':'input'}),
-        }
+        widget= {'username':forms.TextInput(attrs={'class':'input'}),}
 
     def save(self, commit=True):
         user = super(UserCreateForm, self).save(commit=False)
@@ -39,6 +37,4 @@ class CommentForm(forms.ModelForm):
         fields =('name','body')
         widgets = {
         'name':forms.TextInput(),
-        'body':forms.Textarea(),
-
-        }
+        'body':forms.Textarea(),}
