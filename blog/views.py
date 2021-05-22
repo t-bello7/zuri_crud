@@ -1,19 +1,15 @@
-from django.shortcuts import render, redirect
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 from .models import Post, Comments
 from django.urls import reverse_lazy
-from rest_framework.decorators import api_view
-from rest_framework.response import Response
 from .models import Post
 from .serializers import PostSerializer
 from rest_framework import viewsets
-from django.contrib.auth import authenticate, login
-from .forms import UserCreateForm, CommentForm
+from .forms import CommentForm
 
 # Create your views here.
 class HomeView(ListView):
     model = Post
-    template_name= 'blog/user.html'
+    template_name= 'blog/home.html'
     ordering = ['-id']
 
 
@@ -47,42 +43,6 @@ class AddCommentView(CreateView):
     success_url = reverse_lazy('user')
 
 
-def signup(request):
-    form_class = UserCreateForm
-    if request.method == 'POST':
-        form = UserCreateForm(request.POST)
-        if form.is_valid():
-            new_user = form.save()
-            new_user = authenticate(
-                username=form.cleaned_data['username'],
-                password=form.cleaned_data['password1']
-            )
-            login(request, new_user)
-            return redirect('user')
-    else:
-        form = UserCreateForm()
-    return render(request, 'signup.html', {'form': form})
-
-# @api_view(['GET'])
-# def post_collection(request):
-#     if request.method == 'GET':
-#         posts = Post.objects.all()
-#         serializer = PostSerializer(posts, many =True)
-#         content ={
-#             "posts": serializer.data,
-#         }
-#         return Response(content)
-
-# @api_view(['GET'])
-# def post_element(request, pk):
-#     try: 
-#         post = Post.objects.get(pk=pk)
-#     except Post.DoesNotExist:
-#         return HttpResponse(status=404)
-
-#     if request.method == 'GET':
-#         serializer = PostSerializer(post)
-#         return Response(serializer.data)
 
 class PostViewSet(viewsets.ModelViewSet):
     serializer_class = PostSerializer
